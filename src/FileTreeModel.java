@@ -12,12 +12,12 @@ import java.util.Iterator;
  * Created by Adam on 2015.04.14..
  */
 public class FileTreeModel implements TreeModel {
-    ArrayList<TreeModelListener> listeners;
-    FileWrap root;
+    private ArrayList<TreeModelListener> listeners;
+    private FileWrap root;
 
-    FileTreeModel() {
+    public FileTreeModel() {
         listeners = new ArrayList<TreeModelListener>();
-        root = new FileWrap(File.listRoots()[0]);
+        //root = new FileWrap(File.listRoots()[0]);
     }
 
     public void setRoot(FileWrap ruti) {
@@ -69,7 +69,7 @@ public class FileTreeModel implements TreeModel {
     private void fireTreeNodesChanged(TreePath parentPath, int[] indices, Object[] children) {
         TreeModelEvent event = new TreeModelEvent(this, parentPath, indices, children);
         Iterator iterator = listeners.iterator();
-        TreeModelListener listener = null;
+        TreeModelListener listener;
         while (iterator.hasNext()) {
             listener = (TreeModelListener) iterator.next();
             listener.treeNodesChanged(event);

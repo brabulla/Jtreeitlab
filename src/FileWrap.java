@@ -6,11 +6,11 @@ import java.io.File;
 public class FileWrap {
     public File value;
 
-    FileWrap(File f) {
+    public FileWrap(File f) {
         value = f;
     }
 
-    FileWrap(String fp) {
+    public FileWrap(String fp) {
         value = new File(fp);
     }
 
