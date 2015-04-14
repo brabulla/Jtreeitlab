@@ -19,7 +19,10 @@ public class TreeTest implements ItemListener {
 
     public void run() {
         JFrame f = new JFrame("JTree Example");
-        combo = new JComboBox(File.listRoots());
+        combo = new JComboBox();
+        for(File item : File.listRoots())
+            if(item.listFiles()!=null)
+                combo.addItem(item);
 
         fileTreeModel = new FileTreeModel();
         fileTreeModel.setRoot(new FileWrap((File) combo.getSelectedItem()));
